@@ -12,6 +12,10 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/brynhayder/gpu-lib",
     packages=setuptools.find_packages(),
+    install_requires=[
+        'py3nvml',
+        'xmltodict'
+        ],
     entry_points={
         'console_scripts': [
             'exec_when_free = gpulib.exec_when_free:main',

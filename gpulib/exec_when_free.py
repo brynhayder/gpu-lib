@@ -38,6 +38,7 @@ def parse_cmd():
     parser.add_argument('command', nargs=argparse.REMAINDER)
     return parser.parse_args()
 
+
 def main():
     args = parse_cmd()
     if not args.command:
@@ -57,9 +58,10 @@ def main():
     while elapsed < args.timeout:
         free = free_gpus()
         if len(free) >= args.n:
-            print(f"Running command {' '.join(args.command)}")
-            print(f"On gpus: {free}")
-            os.environ['CUDA_VISIBLE_DEVICES'] = ",".join(map(str, free))
+            print(f"Running command: {' '.join(args.command)}")
+            to_use = free[:args.n]
+            print(f"On gpus: {to_use}")
+            os.environ['CUDA_VISIBLE_DEVICES'] = ",".join(map(str, to_use))
             subprocess.run(args.command)
             break
         time.sleep(args.wait)
