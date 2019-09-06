@@ -5,7 +5,7 @@ import time
 
 from py3nvml import py3nvml
 
-from utils import free_gpus, NVMLSession
+from .utils import free_gpus, NVMLSession
 
 
 class GPUNotFoundError(Exception):
@@ -38,9 +38,10 @@ def parse_cmd():
     parser.add_argument('command', nargs=argparse.REMAINDER)
     return parser.parse_args()
 
-
-if __name__ == "__main__":
+def main():
     args = parse_cmd()
+    if not args.command:
+        raise ValueError("No command given.")
 
     with NVMLSession() as sess:
         if not sess:
@@ -65,4 +66,8 @@ if __name__ == "__main__":
         elapsed = time.time() - start
     else:
         raise TimeoutError("Timeout exceeded")
+
+
+if __name__ == "__main__":
+    main()
 
