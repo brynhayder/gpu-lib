@@ -18,7 +18,7 @@ setuptools.setup(
         ],
     entry_points={
         'console_scripts': [
-            'exec_when_free = gpulib.exec_when_free:main',
+            'execute = gpulib.exec_when_free:main',
             ]
         },
     classifiers=[

@@ -68,6 +68,7 @@ def main():
         elapsed = time.time() - start
     else:
         raise TimeoutError("Timeout exceeded")
+    return 0
 
 
 if __name__ == "__main__":
