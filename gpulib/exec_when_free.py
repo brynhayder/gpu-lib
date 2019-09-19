@@ -15,21 +15,21 @@ class GPUNotFoundError(Exception):
 def parse_cmd():
     parser = argparse.ArgumentParser()
     parser.add_argument(
-            '--n',
+            '--n', '-n',
             type=int,
             default=1,
             help='Number o  GPUs (default: %(default)s)'
         )
    
     parser.add_argument(
-            '--timeout',
+            '--timeout', '-t',
             type=float,
             default=float('inf'),
             help='How long to wait in seconds for GPUs before exiting. Default: %(default)f.'
         )
 
     parser.add_argument(
-            '--wait',
+            '--wait', '-w',
             type=float,
             default=1,
             help="How long to wait in seconds between checking for free gpus. Default: %(default)f."
